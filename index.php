@@ -6,6 +6,7 @@ include("florm.php");
 
 class Users extends Model{
 	protected $name = 'users';
+	protected $rec_name = 'name';
 	
 	public function fields(){
 		echo $this->get_model_name();

@@ -57,14 +57,12 @@ class Model{
 	protected $fields;
 	protected $test;
 	protected $description;
+	protected $rec_name;
 	
 	public function Model(){
-		echo 'Model';
-		echo $this->name;
-		echo $this->fields();
-	}
-	public function fields(){
-		echo 'model fields';
+		echo 'create table : '.$this->name.'<br/>';
+		$this->Create_table();
+		$this->fields();
 	}
 	
 	public function get_model_name(){
@@ -74,7 +72,11 @@ class Model{
 	function Create_table($db){
 		$model_id = NULL;
 		try{
-			$query = " CREATE TABLE ".$this->model." (id int NOT NULL AUTO_INCREMENT PRIMARY KEY,".$this->rec_name." varchar(64))";
+			// if($this->rec_name != 'name'){
+
+			// }
+				
+			$query = " CREATE TABLE ".$this->name." (id int NOT NULL AUTO_INCREMENT PRIMARY KEY,".$this->rec_name." varchar(64))";
 			$prep = $db->prepare($query);
 			$test_model = $prep->execute();
 			if (($this->model != 'Models') AND ($test_model ==1)){
